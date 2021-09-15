@@ -1,0 +1,18 @@
+h1 Categories
+
+-   if @categories.present?
+    .list-group
+        -@categories.each do |category|
+            .list-group-item
+                span = category.title
+                .badge.bg-secondary = category.calculations.size
+                .float-end
+                    a.btn.btn-primary.btn-sm> href=edit_category_path(category)
+                        | Edit
+                    a.btn.btn-success.btn-sm href=category_path(category)
+                        | Show
+-   else
+    .alert.alert-danger No Categories
+
+a.btn.btn-success href=new_category_path
+    | + Add Category

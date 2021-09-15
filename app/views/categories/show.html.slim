@@ -1,0 +1,11 @@
+h1 = @category.title
+
+- if @category.calculations.present?
+    ul.list-group
+       - @category.calculations.each do |calculation|
+            a.list-group-item href=calculation_path(calculation)
+                = calculation.frontend_title
+-else
+    .alert.alert-danger No calculations here!
+
+a href = categories_path << back

@@ -1,0 +1,14 @@
+h1 = @calculation.title
+
+-   if @calculation.category
+    a href=category_path(@calculation.category)
+        | >>
+        =< @calculation.category.title
+
+h3
+    => @calculation.argument1
+    = @calculation.operand
+    =<> @calculation.argument2
+    | =
+    =< @calculation.result
+= link_to "back", calculations_path

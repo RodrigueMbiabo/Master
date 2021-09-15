@@ -1,0 +1,40 @@
+
+- if !@calculation.errors
+    ul
+        -@calculation.errors.full_messages.each do |msg|
+
+          li = msg
+
+= simple_form_for @calculation do |f|
+    .row
+        .col-sm-8 = f.input :title
+        .col-sm-4 = f.association :category
+    .row
+        .col-sm-4 = f.input :argument1
+        .col-sm-2 = f.input :operand, as: :select, collection: Calculation::OPERANDS
+        .col-sm-4 = f.input :argument2
+        .col-sm-2 
+            .form-group
+                .form-label
+                    | &nbsp
+                = f.submit class: 'btn btn-primary form-control'
+
+/    .form-group
+        = f.label :argument1, class: 'form-label'
+        = f.text_field :argument1, class: 'form-control'
+    
+
+    p
+        = f.label :operand
+        = f.select :operand, Calculation::OPERANDS
+    
+
+    p
+        = f.label :argument2
+        = f.text_field :argument2
+    = f.submit
+
+/css:
+    .field_with_errors {
+        outline: 1px solid red;
+    }
